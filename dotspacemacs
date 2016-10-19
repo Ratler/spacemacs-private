@@ -308,6 +308,8 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq ns-use-srgb-colorspace nil)
 
+  ;; Workaround bug in master for persp-mode
+  (setq persp-auto-save-opt 0)
 
   ;; Mac specific
   (if (eq system-type 'darwin)
