@@ -320,6 +320,9 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq ns-use-srgb-colorspace nil)
 
+  ;; Disable console mouse support
+  (xterm-mouse-mode -1)
+
   ;; Date / Time
   (setq display-time-day-and-date t)
   (setq display-time-24hr-format t)
