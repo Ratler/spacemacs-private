@@ -12,6 +12,10 @@ install:
 	if ! test -d $(PREFIX)/.emacs.d/.git; then \
 		mv -f $(PREFIX)/.emacs.d $(PREFIX)/.emacs.d.old ; \
 		git clone https://github.com/syl20bnr/spacemacs $(PREFIX)/.emacs.d ; \
+		if test -d $(PREFIX)/.emacs.d/private; then \
+			rm -rf "$(PREFIX)/.emacs.d/private"; \
+			ln -s $(PWD)/private $(PREFIX)/.emacs.d/private ; \
+		fi \
 	else \
 		cd $(PREFIX)/.emacs.d ; \
 		git pull ; \
