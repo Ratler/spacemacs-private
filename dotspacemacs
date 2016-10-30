@@ -304,6 +304,9 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   ;; sh-mode settings
+  (add-to-list 'auto-mode-alist
+               '("\\(DETAILS\\|CONFIGURE\\|DEPENDS\\|CONFLICTS\\)\\|\\(PRE_\\)?\\(BUILD\\|REMOVE\\)\\|\\(POST_\\)\\(BUILD\\|INSTALL\\|REMOVE\\|\\.sh\\)$\\'" . sh-mode))
+  (add-hook 'sh-mode-hook (lambda () (electric-indent-local-mode -1)))
   (setq-default
    sh-basic-offset 2
    sh-indentation 2
@@ -370,8 +373,7 @@ you should place your code here."
   (setq git-gutter-fr+-side 'left-fringe)
 
   ;; Bash stuff
-  (add-to-list 'auto-mode-alist
-               '("\\(DETAILS\\|CONFIGURE\\|DEPENDS\\|CONFLICTS\\)\\|\\(PRE_\\)?\\(BUILD\\|REMOVE\\)\\|\\(POST_\\)\\(BUILD\\|INSTALL\\|REMOVE\\|\\.sh\\)$\\'" . sh-mode))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
