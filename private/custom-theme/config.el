@@ -24,4 +24,22 @@
     (popup-isearch-match :inherit match)
     (popup-scroll-bar-foreground-face :background "#5d4d7a")
     (popup-scroll-bar-background-face :background "#212026")
+
+    ;; Helm
+    (helm-selection :background "#444155")
+    (helm-selection-line :background "#212026")
+    (helm-buffer-directory :background "#292b2e" :foreground "#b2b2b2")
+    (helm-ff-directory :background nil :foreground "#4f97d7")
+    (helm-source-header :weight normal)
+    (helm-header :background "#c56ec3" :foreground "#292b2e")
+    (helm-match :background "#293229" :foreground "#4f97d7")
+
+    ;; Auto-complete / company
+    (company-tooltip :background "#34323e" :foreground "#9a9aba")
+    (company-tooltip-selection :background "#5e5079" :foreground "#b2b2b2")
+    (company-tooltip-common :background "#34323e" :foreground "#b2b2b2")
+    (company-preview-common :background "#34323e" :foreground "#b2b2b2")
+    (company-tooltip-annotation :foreground "#4f97d7")
+    (company-scrollbar-bg :background "#212026")
+    (company-scrollbar-fg :background "#5d4d7a")
     )))
