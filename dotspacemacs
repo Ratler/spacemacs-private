@@ -52,7 +52,9 @@ values."
      puppet
      shell-scripts
      python
-     ruby
+     (ruby :variables
+           ruby-test-runner 'rspec
+           ruby-version-manager 'chruby)
      ruby-on-rails
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -374,7 +376,17 @@ you should place your code here."
   ;;                 version-control-diff-tool 'git-gutter+)
   (setq git-gutter-fr+-side 'left-fringe)
 
-  ;; Bash stuff
+  ;; JSON/JS settings
+  (setq-default js2-basic-offset 2
+                js-indent-level 2)
+
+  ;; Web-mode settings
+  (setq-default web-mode-markup-indent-offset 2
+                web-mode-css-indent-offset 2
+                web-mode-code-indent-offset 2)
+
+  ;; Ruby / Rails
+  
 
   )
 
