@@ -307,6 +307,8 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  ;; Supress stupid PATH warning
+  (setq exec-path-from-shell-arguments '("-l"))
   ;; sh-mode settings
   (add-to-list 'auto-mode-alist
                '("\\(DETAILS\\|CONFIGURE\\|DEPENDS\\|CONFLICTS\\)\\|\\(PRE_\\)?\\(BUILD\\|REMOVE\\)\\|\\(POST_\\)\\(BUILD\\|INSTALL\\|REMOVE\\|\\.sh\\)$\\'" . sh-mode))
@@ -329,6 +331,9 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq ns-use-srgb-colorspace nil)
 
+  ;; Change powerline appearance
+  (setq powerline-default-separator 'arrow-fade)
+
   ;; Disable console mouse support
   (xterm-mouse-mode -1)
 
@@ -350,8 +355,17 @@ you should place your code here."
               mac-right-option-modifier 'nil))
     )
 
+  ;; Navigate windows using M-<arrows>
+  (global-set-key [M-left] 'windmove-left)
+  (global-set-key [M-right] 'windmove-right)
+  (global-set-key [M-up] 'windmove-up)
+  (global-set-key [M-down] 'windmove-down)
+
+  ;; Quickly adjust font-size
   (define-key global-map (kbd "C-+") 'text-scale-increase)
   (define-key global-map (kbd "C--") 'text-scale-decrease)
+
+  ;; Switch windows using m-#
   (let ((m window-numbering-keymap))
     (define-key m "\M-0" nil)
     (define-key m "\M-1" nil)
