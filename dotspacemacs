@@ -52,10 +52,13 @@ values."
      puppet
      shell-scripts
      python
-     (ruby :variables
-           ruby-test-runner 'rspec
-           ruby-version-manager 'chruby)
-     ruby-on-rails
+     php
+     go
+     terraform
+     ;; (ruby :variables
+     ;;      ruby-test-runner 'rspec
+     ;;      ruby-version-manager 'chruby)
+     ;; ruby-on-rails
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
@@ -63,7 +66,7 @@ values."
      syntax-checking
      version-control
      theming
-     themes-megapack
+     ;; themes-megapack
      custom-theme
      )
    ;; List of additional packages that will be installed without being
@@ -366,26 +369,26 @@ you should place your code here."
   (define-key global-map (kbd "C--") 'text-scale-decrease)
 
   ;; Switch windows using m-#
-  (let ((m window-numbering-keymap))
-    (define-key m "\M-0" nil)
-    (define-key m "\M-1" nil)
-    (define-key m "\M-2" nil)
-    (define-key m "\M-3" nil)
-    (define-key m "\M-4" nil)
-    (define-key m "\M-5" nil)
-    (define-key m "\M-6" nil)
-    (define-key m "\M-7" nil)
-    (define-key m "\M-8" nil)
-    (define-key m "\M-9" nil)
-    (define-key m (kbd "s-1") 'select-window-1)
-    (define-key m (kbd "s-2") 'select-window-2)
-    (define-key m (kbd "s-3") 'select-window-3)
-    (define-key m (kbd "s-4") 'select-window-4)
-    (define-key m (kbd "s-5") 'select-window-5)
-    (define-key m (kbd "s-6") 'select-window-6)
-    (define-key m (kbd "s-7") 'select-window-7)
-    (define-key m (kbd "s-8") 'select-window-8)
-    (define-key m (kbd "s-9") 'select-window-9))
+  ;; (let ((m window-numbering-keymap))
+  ;;   (define-key m "\M-0" nil)
+  ;;   (define-key m "\M-1" nil)
+  ;;   (define-key m "\M-2" nil)
+  ;;   (define-key m "\M-3" nil)
+  ;;   (define-key m "\M-4" nil)
+  ;;   (define-key m "\M-5" nil)
+  ;;   (define-key m "\M-6" nil)
+  ;;   (define-key m "\M-7" nil)
+  ;;   (define-key m "\M-8" nil)
+  ;;   (define-key m "\M-9" nil)
+  ;;   (define-key m (kbd "s-1") 'select-window-1)
+  ;;   (define-key m (kbd "s-2") 'select-window-2)
+  ;;   (define-key m (kbd "s-3") 'select-window-3)
+  ;;   (define-key m (kbd "s-4") 'select-window-4)
+  ;;   (define-key m (kbd "s-5") 'select-window-5)
+  ;;   (define-key m (kbd "s-6") 'select-window-6)
+  ;;   (define-key m (kbd "s-7") 'select-window-7)
+  ;;   (define-key m (kbd "s-8") 'select-window-8)
+  ;;  (define-key m (kbd "s-9") 'select-window-9))
   ;;(version-control :variables
   ;;                 version-control-diff-tool 'git-gutter+)
   (setq git-gutter-fr+-side 'left-fringe)
@@ -411,4 +414,4 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+)
