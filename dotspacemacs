@@ -31,6 +31,8 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     asciidoc
+     nginx
      sql
      javascript
      ansible
@@ -41,6 +43,7 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
+     ;;helm-ag
      auto-completion
      better-defaults
      emacs-lisp
@@ -59,6 +62,7 @@ values."
      ;;      ruby-test-runner 'rspec
      ;;      ruby-version-manager 'chruby)
      ;; ruby-on-rails
+
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
@@ -122,7 +126,7 @@ values."
    ;; (default 'vim)
    dotspacemacs-editing-style 'emacs
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
-   dotspacemacs-verbose-loading nil
+   dotspacemacs-verbose-loading t
    ;; Specify the startup banner. Default value is `official', it displays
    ;; the official spacemacs logo. An integer value is the index of text
    ;; banner, `random' chooses a random text banner in `core/banners'
@@ -311,7 +315,7 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   ;; Supress stupid PATH warning
-  (setq exec-path-from-shell-arguments '("-l"))
+  ;;(setq exec-path-from-shell-arguments '("-l"))
   ;; sh-mode settings
   (add-to-list 'auto-mode-alist
                '("\\(DETAILS\\|CONFIGURE\\|DEPENDS\\|CONFLICTS\\)\\|\\(PRE_\\)?\\(BUILD\\|REMOVE\\)\\|\\(POST_\\)\\(BUILD\\|INSTALL\\|REMOVE\\|\\.sh\\)$\\'" . sh-mode))
@@ -323,6 +327,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
    sh-indent-after-do '+
    sh-indent-after-continuation 0
    sh-indent-for-then 0)
+  ;;(add-hook 'focus-in-hook #'reset-default-font)
   )
 
 (defun dotspacemacs/user-config ()
@@ -334,8 +339,10 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq ns-use-srgb-colorspace nil)
 
-  ;; Change powerline appearance
-  (setq powerline-default-separator 'arrow-fade)
+  ;; Change powerline appearance in X vs console
+  (if (display-graphic-p)
+      (setq powerline-default-separator 'arrow-fade)
+    (setq powerline-default-separator 'utf-8))
 
   ;; Disable console mouse support
   (xterm-mouse-mode -1)
@@ -344,6 +351,10 @@ you should place your code here."
   (setq display-time-day-and-date t)
   (setq display-time-24hr-format t)
   (display-time-mode)
+
+  ;; Handle linum spacing in console mode
+  (unless (display-graphic-p)
+    (setq linum-format "%d "))
 
   ;; Paste at cursor, not where the mouse pointer is
   (setq mouse-yank-at-point t)
@@ -368,27 +379,6 @@ you should place your code here."
   (define-key global-map (kbd "C-+") 'text-scale-increase)
   (define-key global-map (kbd "C--") 'text-scale-decrease)
 
-  ;; Switch windows using m-#
-  ;; (let ((m window-numbering-keymap))
-  ;;   (define-key m "\M-0" nil)
-  ;;   (define-key m "\M-1" nil)
-  ;;   (define-key m "\M-2" nil)
-  ;;   (define-key m "\M-3" nil)
-  ;;   (define-key m "\M-4" nil)
-  ;;   (define-key m "\M-5" nil)
-  ;;   (define-key m "\M-6" nil)
-  ;;   (define-key m "\M-7" nil)
-  ;;   (define-key m "\M-8" nil)
-  ;;   (define-key m "\M-9" nil)
-  ;;   (define-key m (kbd "s-1") 'select-window-1)
-  ;;   (define-key m (kbd "s-2") 'select-window-2)
-  ;;   (define-key m (kbd "s-3") 'select-window-3)
-  ;;   (define-key m (kbd "s-4") 'select-window-4)
-  ;;   (define-key m (kbd "s-5") 'select-window-5)
-  ;;   (define-key m (kbd "s-6") 'select-window-6)
-  ;;   (define-key m (kbd "s-7") 'select-window-7)
-  ;;   (define-key m (kbd "s-8") 'select-window-8)
-  ;;  (define-key m (kbd "s-9") 'select-window-9))
   ;;(version-control :variables
   ;;                 version-control-diff-tool 'git-gutter+)
   (setq git-gutter-fr+-side 'left-fringe)
@@ -401,10 +391,6 @@ you should place your code here."
   (setq-default web-mode-markup-indent-offset 2
                 web-mode-css-indent-offset 2
                 web-mode-code-indent-offset 2)
-
-  ;; Ruby / Rails
-  
-
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
