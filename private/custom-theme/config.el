@@ -42,4 +42,8 @@
     (company-tooltip-annotation :foreground "#4f97d7")
     (company-scrollbar-bg :background "#212026")
     (company-scrollbar-fg :background "#5d4d7a")
+
+    ;; Isearch
+    (isearch :background "#5f5f87")
+    (isearch-lazy-highlight-face :background "#5f5f87")
     )))
