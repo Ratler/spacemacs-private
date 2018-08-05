@@ -1,0 +1,20 @@
+# -*- mode: snippet -*-
+# name: LPYM
+# key: LPYM
+# expand-env: ((yas-indent-line 'fixed))
+# --
+          MODULE=${1:$$(yas/choose-value '("python" "python2"))}-${2:foo}
+         VERSION=$3
+          SOURCE=$2-$VERSION.tar.gz
+      SOURCE_URL=https://pypi.python.org/packages/source/${2:$(yas-substr yas-text "^.")}/$2
+      SOURCE_VFY=sha256:
+SOURCE_DIRECTORY=$BUILD_DIRECTORY/$2-$VERSION
+        WEB_SITE=https://pypi.org/project/$2/
+            TYPE=${4:$$(yas/choose-value '("python3" "python2"))}
+         ENTERED=`(format-time-string "%Y%m%d")`$0
+         UPDATED=`(format-time-string "%Y%m%d")`$0
+           SHORT="$6"
+
+cat << EOF
+$7
+EOF

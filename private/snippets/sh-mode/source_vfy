@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: SOURCE[..]_VFY=sha256:
+# key: VFY
+# --
+SOURCE${1}_VFY=sha256:
