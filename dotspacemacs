@@ -43,7 +43,7 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
-     helm-ag
+     ;helm-ag
      auto-completion
      better-defaults
      emacs-lisp
@@ -58,6 +58,7 @@ values."
      php
      go
      terraform
+     custom
      ;; (ruby :variables
      ;;      ruby-test-runner 'rspec
      ;;      ruby-version-manager 'chruby)
@@ -72,6 +73,7 @@ values."
      theming
      ;; themes-megapack
      custom-theme
+     wakatime
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -340,9 +342,9 @@ you should place your code here."
   (setq ns-use-srgb-colorspace nil)
 
   ;; Change powerline appearance in X vs console
-  (if (display-graphic-p)
+  ;;(if (display-graphic-p)
       (setq powerline-default-separator 'arrow-fade)
-    (setq powerline-default-separator 'utf-8))
+    ;;(setq powerline-default-separator 'utf-8))
 
   ;; Disable console mouse support
   (xterm-mouse-mode -1)
@@ -384,8 +386,8 @@ you should place your code here."
   (setq git-gutter-fr+-side 'left-fringe)
 
   ;; JSON/JS settings
-  (setq-default js2-basic-offset 2
-                js-indent-level 2)
+  (setq-default js2-basic-offset 4
+                js-indent-level 4)
 
   ;; Web-mode settings
   (setq-default web-mode-markup-indent-offset 2
@@ -400,4 +402,8 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-)
+ '(ansi-color-names-vector
+   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
+ '(evil-want-Y-yank-to-eol nil)
+ '(magit-commit-arguments (quote ("--verbose" "--gpg-sign=26CBF568BD115DD6")))
+ )
